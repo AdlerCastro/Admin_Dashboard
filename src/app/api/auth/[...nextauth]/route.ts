@@ -1,8 +1,8 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import Connect from '@/utils/database/db'
 import User from '@/utils/models/User'
 import bcrypt from 'bcrypt'
-import { Connect } from '@/utils/database/db'
 
 export const authOptions: any = {
     pages: {
