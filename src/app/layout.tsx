@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
+import { getServerSession } from "next-auth";
+
 import SideBar from "@/components/organisms/SideBar";
+import ReactQueryProvier from "@/utils/ReactQueryProvider";
+import SessionProvider from "@/utils/SessionProvider";
+
+import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,18 +19,25 @@ export const metadata: Metadata = {
   description: "A management dashboard for companies.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <SideBar />
-        <main>
-          {children}
-        </main>
+        <ReactQueryProvier>
+          <SessionProvider session={session}>
+            <SideBar />
+            <main>
+              {children}
+            </main>
+          </SessionProvider>
+        </ReactQueryProvier>
       </body>
     </html>
   );
