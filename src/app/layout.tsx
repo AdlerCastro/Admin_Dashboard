@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <SideBar />
-        <main className="w-full h-full">
+        <main>
           {children}
         </main>
       </body>
