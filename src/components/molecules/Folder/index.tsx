@@ -1,6 +1,7 @@
 'use client'
 
 import Button from '@/components/atoms/Button'
+import { signOut } from 'next-auth/react'
 import React, { useState } from 'react'
 
 export default function Folder() {
@@ -39,7 +40,7 @@ export default function Folder() {
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                         <li><Button className='font-normal'>aaa</Button ></li>
                         <li><Button className='font-normal'>bbb</Button ></li>
-                        <li><Button className='font-normal'>ccc</Button ></li>
+                        <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
                     </div>
                 </ul>
             </nav>
