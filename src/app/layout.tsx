@@ -32,7 +32,6 @@ export default async function RootLayout({
       <body className={poppins.className}>
         <ReactQueryProvier>
           <SessionProvider session={session}>
-            <SideBar />
             <main>
               {children}
             </main>
