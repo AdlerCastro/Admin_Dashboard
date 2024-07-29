@@ -4,6 +4,7 @@ import Connect from '@/utils/database/db'
 import User from '@/utils/models/User'
 import bcrypt from 'bcrypt'
 
+
 export const authOptions: any = {
     pages: {
         signIn: '/Login'
