@@ -27,7 +27,7 @@ export default function Folder() {
             {/* Geral */}
             <nav className='items-center'>
                 <input type="checkbox" name="checkbox" id="checkbox-geral" className="hidden" onClick={toggleGeral} />
-                <label htmlFor="checkbox-geral" className='font-semibold text-base cursor-pointer flex flex-row gap-2 items-center'>
+                <label htmlFor="checkbox-geral" className='font-semibold text-lg cursor-pointer flex flex-row gap-2 items-center'>
                     <span className={`mb-1 w-5 border-solid items-center
                     transition-all duration-300
                     before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
@@ -40,14 +40,14 @@ export default function Folder() {
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                         <li><Button className='font-normal'>aaa</Button ></li>
                         <li><Button className='font-normal'>bbb</Button ></li>
-                        <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
+                        <li><Button className='font-normal'>ccc</Button ></li>
                     </div>
                 </ul>
             </nav>
             {/* Ferramentas */}
             <nav className='items-center'>
                 <input type="checkbox" name="checkbox" id="checkbox-ferramentas" className="hidden" onClick={toggleFerramentas} />
-                <label htmlFor="checkbox-ferramentas" className='font-semibold text-base cursor-pointer flex flex-row gap-2 items-center'>
+                <label htmlFor="checkbox-ferramentas" className='font-semibold cursor-pointer flex flex-row gap-2 items-center text-lg'>
                 <span className={`mb-1 w-5 border-solid items-center
                     transition-all duration-300
                     before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
@@ -67,7 +67,7 @@ export default function Folder() {
             {/* Opcional */}
             <nav className='items-center'>
                 <input type="checkbox" name="checkbox" id="checkbox-opcional" className="hidden" onClick={toggleOpcional} />
-                <label htmlFor="checkbox-opcional" className='font-semibold text-base cursor-pointer flex flex-row gap-2 items-center'>
+                <label htmlFor="checkbox-opcional" className='font-semibold cursor-pointer flex flex-row gap-2 items-center text-lg'>
                 <span className={`mb-1 w-5 border-solid items-center
                     transition-all duration-300
                     before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
@@ -79,8 +79,8 @@ export default function Folder() {
                 <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[140px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                         <li><Button className='font-normal'>aaa</Button ></li>
-                        <li><Button className='font-normal'>bbb</Button ></li>
-                        <li><Button className='font-normal'>ccc</Button ></li>
+                        <li><Button className='font-normal'>bbb</Button ></li>                        
+                        <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
                     </div>
                 </ul>
             </nav>
