@@ -1,7 +1,54 @@
+'use client'
+
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { useQuery } from '@tanstack/react-query'
+import getUser from '@/actions/getUser'
+
+import Button from '@/components/atoms/Button'
+import Loading from '@/app/loading'
+
 export default function Profile() {
+
+  const [openProfile, setOpenProfile] = useState(false)
+
+  const toggleProfile = () => {
+    setOpenProfile(!openProfile)
+  }
+
+  const { data, isLoading } = useQuery({
+    queryFn: async () => await getUser(),
+    queryKey: ["Users"]
+  })
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <div>
-        <p>Profile</p>
+      <nav className='items-center'>
+        <input type="checkbox" name="checkbox" id="checkbox-geral" className="hidden" onClick={toggleProfile} />
+        <label htmlFor="checkbox-geral" className='font-semibold text-lg cursor-pointer flex flex-row gap-2 items-center'>
+          <span className={`mb-1 w-5 border-solid items-center
+                    transition-all duration-300
+                    before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
+                    after:w-[13px] after:mt-1 after:h-[3px] after:relative after:block dark:after:bg-white after:bg-black
+                    after:rotate-[-45deg] before:rotate-[45deg]
+                        ${openProfile ? 'rotate-90' : 'rotate-0'}`
+          }></span>
+          {data.map((user: any) => (
+            <div key={user._id}>
+              <h2>{user.name}</h2>
+            </div>
+          ))}
+        </label>
+        <ul className={`transition-all duration-300 list-none overflow-hidden ${openProfile ? 'h-[140px]' : 'h-0'}`}>
+          <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
+            <li><Button className='w-full font-normal'>Visualizar perfil</Button ></li>
+          </div>
+        </ul>
+      </nav>
     </div>
   )
 }
