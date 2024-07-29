@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import LoginPage from ".";
+import Profile from ".";
 
 export default {
-    tilte: "Components/Templates/Login",
-    component: LoginPage
+    tilte: "Components/Molecules/Profile",
+    component: Profile
 } as Meta<StoryObj>
 
 type Story = StoryObj

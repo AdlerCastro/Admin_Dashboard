@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Register from ".";
+import RegisterPage from ".";
 
 export default {
     tilte: "Components/Templates/Register",
-    component: Register
+    component: RegisterPage
 } as Meta<StoryObj>
 
 type Story = StoryObj
