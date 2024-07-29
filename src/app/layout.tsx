@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { getServerSession } from "next-auth";
 
-import SideBar from "@/components/organisms/SideBar";
 import ReactQueryProvier from "@/utils/ReactQueryProvider";
 import SessionProvider from "@/utils/SessionProvider";
 
