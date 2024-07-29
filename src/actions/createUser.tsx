@@ -1,6 +1,6 @@
 export default async function createUser() {
     try {
-        const res = await fetch("/api/register")
+        const res = await fetch("/api/user/register")
         
         if (res.status === 409) {
             return console.log("*Email já cadastrado*")
