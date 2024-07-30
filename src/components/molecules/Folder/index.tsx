@@ -2,9 +2,12 @@
 
 import Button from '@/components/atoms/Button'
 import { signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 export default function Folder() {
+
+    const router = useRouter()
 
     const [openGeral, setOpenGeral] = useState(false)
     const [openFerramentas, setOpenFerramentas] = useState(false)
@@ -38,7 +41,7 @@ export default function Folder() {
                 </label>
                 <ul className={`transition-all duration-300 list-none overflow-hidden ${openGeral ? 'h-[140px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
-                        <li><Button className='font-normal'>aaa</Button ></li>
+                        <li><Button className='font-normal' onClick={() => router.push("/Users")}>Usuários</Button ></li>
                         <li><Button className='font-normal'>bbb</Button ></li>
                         <li><Button className='font-normal'>ccc</Button ></li>
                     </div>
