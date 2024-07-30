@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import getUser from '@/actions/getUser'
 
 import Button from '@/components/atoms/Button'
-import Loading from '@/app/loading'
+import Loading from '@/app/(Home)/loading'
 
 export default function Profile() {
 
@@ -22,14 +22,14 @@ export default function Profile() {
   })
 
   if (isLoading) {
-    return <Loading />
+    return <Loading/>
   }
 
   return (
     <div>
       <nav className='items-center'>
-        <input type="checkbox" name="checkbox" id="checkbox-geral" className="hidden" onClick={toggleProfile} />
-        <label htmlFor="checkbox-geral" className='font-semibold text-lg cursor-pointer flex flex-row gap-2 items-center'>
+        <input type="checkbox" name="checkbox" id="checkbox-profile" className="hidden" onClick={toggleProfile} />
+        <label htmlFor="checkbox-profile" className='font-semibold text-lg cursor-pointer flex flex-row gap-2 items-center'>
           <span className={`mb-1 w-5 border-solid items-center
                     transition-all duration-300
                     before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
@@ -45,7 +45,7 @@ export default function Profile() {
         </label>
         <ul className={`transition-all duration-300 list-none overflow-hidden ${openProfile ? 'h-[140px]' : 'h-0'}`}>
           <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
-            <li><Button className='w-full font-normal'>Visualizar perfil</Button ></li>
+            <li><Button className='font-normal'>Visualizar perfil</Button ></li>
           </div>
         </ul>
       </nav>
