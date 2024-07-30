@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { useQuery } from '@tanstack/react-query'
-import getUser from '@/actions/getUser'
+import { useSession } from 'next-auth/react'
 
 import Button from '@/components/atoms/Button'
 import Loading from '@/app/(Home)/loading'
@@ -11,18 +10,10 @@ import Loading from '@/app/(Home)/loading'
 export default function Profile() {
 
   const [openProfile, setOpenProfile] = useState(false)
+  const {data: session } = useSession()
 
   const toggleProfile = () => {
     setOpenProfile(!openProfile)
-  }
-
-  const { data, isLoading } = useQuery({
-    queryFn: async () => await getUser(),
-    queryKey: ["Users"]
-  })
-
-  if (isLoading) {
-    return <Loading/>
   }
 
   return (
@@ -37,11 +28,7 @@ export default function Profile() {
                     after:rotate-[-45deg] before:rotate-[45deg]
                         ${openProfile ? 'rotate-90' : 'rotate-0'}`
           }></span>
-          {data.map((user: any) => (
-            <div key={user._id}>
-              <h2>{user.name}</h2>
-            </div>
-          ))}
+          {session?.user?.name}
         </label>
         <ul className={`transition-all duration-300 list-none overflow-hidden ${openProfile ? 'h-[140px]' : 'h-0'}`}>
           <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
