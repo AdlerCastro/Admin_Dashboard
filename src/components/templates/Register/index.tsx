@@ -16,6 +16,7 @@ export default function RegisterPage() {
         const formData = new FormData(e.currentTarget);
         const name = formData.get("name");
         const email = formData.get("email");
+        const cargo = formData.get("cargo");
         const password = formData.get("password");
 
         try {
@@ -27,7 +28,8 @@ export default function RegisterPage() {
                 body: JSON.stringify({
                     name,
                     email,
-                    password
+                    cargo,
+                    password,
                 })
             })
 
@@ -68,6 +70,15 @@ export default function RegisterPage() {
                             type="email"
                             name="email"
                             placeholder="fulano@xxx.com"
+                            className=" text-black w-full"
+                        />
+                    </label>
+                    <label className='ml-8'>
+                        <h3 className="mb-2">Digite seu cargo</h3>
+                        <input
+                            type="text"
+                            name="cargo"
+                            placeholder="Trabalhador..."
                             className=" text-black w-full"
                         />
                     </label>

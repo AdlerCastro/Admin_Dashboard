@@ -42,6 +42,8 @@ export default function UsersPage() {
             <TableHead>ID</TableHead>
             <TableHead>Nome</TableHead>
             <TableHead>Email</TableHead>
+            <TableHead>Cargo</TableHead>
+            <TableHead>Visualizar</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -50,6 +52,7 @@ export default function UsersPage() {
               <TableCell className="font-medium">{user._id}</TableCell>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
+              <TableCell>{user.cargo}</TableCell>
               <TableCell><Button className='p-1 w-[14%] overflow-hidden hover:w-full duration-500' onClick={() => viewUser(user._id)}>Detalhes</Button></TableCell>
             </TableRow>
           ))}
