@@ -18,6 +18,9 @@ const User =
         },
         image: {
             type: String,
+        },
+        cargo: {
+            type: String,
         }
     }, {timestamps: true})
 
