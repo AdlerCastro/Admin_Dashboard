@@ -2,6 +2,9 @@
 
 import { useQuery } from '@tanstack/react-query'
 import getUser from '@/actions/getUser'
+import Loading from '@/app/loading'
+import Button from '@/components/atoms/Button'
+import { useRouter } from 'next/navigation'
 
 import {
   Table,
@@ -13,9 +16,9 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import Loading from '@/app/loading'
 
 export default function UsersPage() {
+  const router = useRouter()
 
   const { data, isLoading } = useQuery({
     queryFn: async () => await getUser(),
@@ -24,6 +27,10 @@ export default function UsersPage() {
 
   if (isLoading) {
     return <Loading />
+  } 
+
+  const viewUser = (_id: string) => {
+    router.push(`/Users/${_id}`);
   }
 
   return (
@@ -43,6 +50,7 @@ export default function UsersPage() {
               <TableCell className="font-medium">{user._id}</TableCell>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
+              <TableCell><Button className='p-1 w-[14%] overflow-hidden hover:w-full duration-500' onClick={() => viewUser(user._id)}>Detalhes</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
