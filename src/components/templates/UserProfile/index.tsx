@@ -10,7 +10,7 @@ import React from 'react'
 interface User {
     _id: string;
     name: string;
-    role: string;
+    cargo: string;
 }
 
 export default function UserProfilePage() {
@@ -42,6 +42,7 @@ export default function UserProfilePage() {
             <h1>Usuário</h1>
             <h2>{data?.name}</h2>
             <h2>{data?._id}</h2>
+            <h2>{data?.cargo}</h2>
         </div>
     )
 }
