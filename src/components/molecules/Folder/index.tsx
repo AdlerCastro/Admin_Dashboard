@@ -42,7 +42,7 @@ export default function Folder() {
                 <ul className={`transition-all duration-300 list-none overflow-hidden ${openGeral ? 'h-[140px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                         <li><Button className='font-normal' onClick={() => router.push("/Users")}>Usuários</Button ></li>
-                        <li><Button className='font-normal'>bbb</Button ></li>
+                        <li><Button className='font-normal' onClick={() => router.push("/View")}>Gráficos</Button ></li>
                         <li><Button className='font-normal'>ccc</Button ></li>
                     </div>
                 </ul>
