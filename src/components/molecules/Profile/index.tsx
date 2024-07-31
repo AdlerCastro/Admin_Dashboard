@@ -5,15 +5,20 @@ import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 
 import Button from '@/components/atoms/Button'
-import Loading from '@/app/(Home)/loading'
+import { useRouter } from 'next/navigation'
 
 export default function Profile() {
 
   const [openProfile, setOpenProfile] = useState(false)
   const {data: session } = useSession()
+  const router = useRouter()
 
   const toggleProfile = () => {
     setOpenProfile(!openProfile)
+  }
+
+  const viewUser = (_id: string) => {
+    router.push(`/Users/${_id}`);
   }
 
   return (
