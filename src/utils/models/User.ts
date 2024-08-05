@@ -21,7 +21,13 @@ const User =
         },
         cargo: {
             type: String,
-        }
-    }, {timestamps: true})
+        },
+        tasks: [
+            {
+                priority: String,
+                description: String,
+            }
+        ]
+    }, { timestamps: true })
 
 export default mongoose.models.User || mongoose.model("User", User)
