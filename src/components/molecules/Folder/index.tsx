@@ -45,7 +45,7 @@ export default function Folder() {
             <nav className='items-center'>
                 <input type="checkbox" name="checkbox" id="checkbox-opcional" className="hidden" onClick={toggleOpcional} />
                 <label htmlFor="checkbox-opcional" className='font-semibold cursor-pointer flex flex-row gap-2 items-center text-lg'>
-                <span className={`mb-1 w-5 border-solid items-center
+                    <span className={`mb-1 w-5 border-solid items-center
                     transition-all duration-300
                     before:w-[13px] before:mt-1 before:h-[3px] before:relative before:block dark:before:bg-white before:bg-black
                     after:w-[13px] after:mt-1 after:h-[3px] after:relative after:block dark:after:bg-white after:bg-black
@@ -55,8 +55,7 @@ export default function Folder() {
                 </label>
                 <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[140px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
-                        <li><Button className='font-normal'>Mudar tema</Button ></li>                       
-                        <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
+                        <li><Button className='font-normal'>Mudar tema</Button ></li>
                     </div>
                 </ul>
             </nav>
