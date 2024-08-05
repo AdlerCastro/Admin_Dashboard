@@ -1,25 +1,24 @@
 'use client'
 
 import React, { useState } from 'react'
-import Image from 'next/image'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 import Button from '@/components/atoms/Button'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 export default function Profile() {
 
   const [openProfile, setOpenProfile] = useState(false)
   const {data: session } = useSession()
-  const router = useRouter()
+  // const router = useRouter()
 
   const toggleProfile = () => {
     setOpenProfile(!openProfile)
   }
 
-  const viewUser = (_id: string) => {
-    router.push(`/Users/${_id}`);
-  }
+  // const viewUser = (_id: string) => {
+  //   router.push(`/Users/${_id}`);
+  // }
 
   return (
     <div>
@@ -38,6 +37,7 @@ export default function Profile() {
         <ul className={`transition-all duration-300 list-none overflow-hidden ${openProfile ? 'h-[140px]' : 'h-0'}`}>
           <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
             <li><Button className='font-normal'>Visualizar perfil</Button ></li>
+            <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
           </div>
         </ul>
       </nav>
