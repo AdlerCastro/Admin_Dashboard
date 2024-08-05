@@ -7,6 +7,16 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
 import { DonutWithText } from '@/components/molecules/Graphics';
 
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@/components/ui/table'
+
 interface User {
     _id: string;
     name: string;
@@ -36,12 +46,21 @@ export default function UserProfilePage() {
     }
 
     return (
-        <div className='relative w-full h-full bg-zinc-900 text-zinc-50 flex flex-col items-center justify-center'>
+        <div className='relative w-full h-full bg-zinc-900 text-zinc-50 flex flex-col items-center justify-around'>
             <Button className='absolute left-0 top-0' onClick={() => routerBack()}>Voltar</Button>
-            <h1>Usuário</h1>
-            <h2>{data?.name}</h2>
-            <h2>{data?._id}</h2>
-            <h2>{data?.cargo}</h2>
+            <Table className='p-5 bg-zinc-800 rounded-lg'>
+                <TableBody className='items-center'>
+                    <TableRow className='flex flex-col gap-2'>
+                        <TableCell>ID: {data?._id}</TableCell>
+                    </TableRow>
+                    <TableRow className='flex flex-col gap-2'>
+                        <TableCell>Nome: {data?.name}</TableCell>
+                    </TableRow>
+                    <TableRow className='flex flex-col gap-2'>
+                        <TableCell>Cargo: {data?.cargo}</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
             <DonutWithText />
         </div>
     )
