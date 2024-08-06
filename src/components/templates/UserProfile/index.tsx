@@ -1,21 +1,23 @@
 'use client'
 
 import { getUserById } from '@/actions/getUserById';
-import Loading from '@/app/loading';
-import Button from '@/components/atoms/Button';
 import { useQuery } from '@tanstack/react-query';
 import { useParams, useRouter } from 'next/navigation';
-import { DonutWithText } from '@/components/molecules/Graphics';
+import { useState } from 'react';
 
+import Loading from '@/app/loading';
+import Button from '@/components/atoms/Button';
+import { DonutWithText } from '@/components/molecules/Graphics';
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
-    TableHead,
-    TableHeader,
     TableRow,
 } from '@/components/ui/table'
+import { Input } from '@/components/atoms/Input';
+import { ListHeader } from '@/components/molecules/List/Header';
+import { Item } from '@/components/molecules/List/Item';
+import { Empty } from '@/components/organisms/Empty';
 
 interface User {
     _id: string;
@@ -23,7 +25,15 @@ interface User {
     cargo: string;
 }
 
+export interface ITask {
+    id: number
+    text: string
+    isChecked: boolean
+}
+
 export default function UserProfilePage() {
+    const [tasks, setTasks] = useState<ITask[]>([])
+    const [inputValue, setInputValue] = useState('')
 
     const router = useRouter();
     const { _id } = useParams() as { _id: string };
@@ -45,22 +55,97 @@ export default function UserProfilePage() {
         router.back()
     }
 
+    const checkedTasksCounter = tasks.reduce((prevValue, currentTask) => {
+        if (currentTask.isChecked) {
+            return prevValue + 1
+        }
+
+        return prevValue
+    }, 0)
+
+    function handleAddTask() {
+        if (!inputValue) {
+            return
+        }
+
+        const newTask: ITask = {
+            id: new Date().getTime(),
+            text: inputValue,
+            isChecked: false,
+        }
+
+        setTasks((state) => [...state, newTask])
+        setInputValue('')
+    }
+
+    function handleRemoveTask(id: number) {
+        const filteredTasks = tasks.filter((task) => task.id !== id)
+
+        if (!confirm('Deseja mesmo apagar essa tarefa?')) {
+            return
+        }
+
+        setTasks(filteredTasks)
+    }
+
+    function handleToggleTask({ id, value }: { id: number; value: boolean }) {
+        const updatedTasks = tasks.map((task) => {
+            if (task.id === id) {
+                return { ...task, isChecked: value }
+            }
+
+            return { ...task }
+        })
+
+        setTasks(updatedTasks)
+    }
+
     return (
         <div className='relative w-full h-full bg-zinc-900 text-zinc-50 flex flex-col items-center justify-around'>
             <Button className='absolute left-0 top-0' onClick={() => routerBack()}>Voltar</Button>
             <Table className='p-5 bg-zinc-800 rounded-lg'>
                 <TableBody className='items-center'>
-                    <TableRow className='flex flex-col gap-2'>
-                        <TableCell>ID: {data?._id}</TableCell>
+                    <TableRow className='flex gap-2'>
+                        <TableCell>ID:</TableCell>
+                        <TableCell>{data?._id}</TableCell>
                     </TableRow>
-                    <TableRow className='flex flex-col gap-2'>
-                        <TableCell>Nome: {data?.name}</TableCell>
+                    <TableRow className='flex gap-2'>
+                        <TableCell>Nome:</TableCell>
+                        <TableCell>{data?.name}</TableCell>
                     </TableRow>
-                    <TableRow className='flex flex-col gap-2'>
-                        <TableCell>Cargo: {data?.cargo}</TableCell>
+                    <TableRow className='flex gap-2'>
+                        <TableCell>Cargo:</TableCell>
+                        <TableCell>{data?.cargo}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
+            <section className='bg-zinc-800 w-full flex flex-col items-center p-3 rounded-lg'>
+                <div className='flex items-center'>
+                    <Input className='w-96 h-7 mr-5 text-black' onChange={(e) => setInputValue(e.target.value)}
+                        value={inputValue} />
+                    <Button className='hover:transform-none' onClick={handleAddTask}>Criar Tarefa</Button>
+                </div>
+                <div className='w-full'>
+                    <ListHeader
+                        tasksCounter={tasks.length}
+                        checkedTasksCounter={checkedTasksCounter}
+                    />
+                    {tasks.length > 0 ? (
+                        <div>
+                            {tasks.map((task) => (
+                                <Item
+                                    key={task.id}
+                                    data={task}
+                                    removeTask={handleRemoveTask}
+                                    toggleTaskStatus={handleToggleTask}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <Empty />
+                    )}
+                </div>
+            </section>
             <DonutWithText />
         </div>
     )
