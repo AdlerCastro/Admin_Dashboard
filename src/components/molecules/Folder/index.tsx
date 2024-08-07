@@ -2,6 +2,7 @@
 
 import Button from '@/components/atoms/Button'
 import { signOut } from 'next-auth/react'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
@@ -11,6 +12,7 @@ export default function Folder() {
 
     const [openGeral, setOpenGeral] = useState(false)
     const [openOpcional, setOpenOpcional] = useState(false)
+    const [openMenu, setOpenMenu] = useState(false)
 
     const toggleGeral = () => {
         setOpenGeral(!openGeral)
@@ -19,6 +21,12 @@ export default function Folder() {
     const toggleOpcional = () => {
         setOpenOpcional(!openOpcional)
     }
+
+    const toggleMenu = () => {
+        setOpenMenu(!openMenu)
+    }
+
+    const { setTheme } = useTheme()
 
     return (
         <div className='flex flex-1 flex-col justify-around'>
@@ -53,9 +61,21 @@ export default function Folder() {
                         ${openOpcional ? 'rotate-90' : 'rotate-0'}`
                     }></span> Opcional
                 </label>
-                <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[140px]' : 'h-0'}`}>
+                <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[210px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
-                        <li><Button className='font-normal'>Mudar tema</Button ></li>
+                        <li>
+                            <input type="checkbox" name="checkbox" id="checkbox-menu" className="hidden" />
+                            <label htmlFor="checkbox-menu" className='font-semibold p-2 flex flex-row items-center text-lg'>
+                                <Button onClick={toggleMenu} className={`font-normal`}>Mudar tema</Button >
+                            </label>
+                            <ul className={`transition-all duration-300 list-none overflow-hidden ${openMenu ? 'h-[150px]' : 'h-0'}`}>
+                                <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
+                                    <li><Button onClick={() => setTheme("dark")}>Dark</Button></li>
+                                    <li><Button onClick={() => setTheme("light")}>Light</Button></li>
+                                    <li><Button onClick={() => setTheme("system")}>System</Button></li>
+                                </div>
+                            </ul>
+                        </li>
                     </div>
                 </ul>
             </nav>
