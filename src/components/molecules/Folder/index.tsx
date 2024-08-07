@@ -61,14 +61,14 @@ export default function Folder() {
                         ${openOpcional ? 'rotate-90' : 'rotate-0'}`
                     }></span> Opcional
                 </label>
-                <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[210px]' : 'h-0'}`}>
+                <ul className={`transition-all duration-300 list-none overflow-hidden ${openOpcional ? 'h-[250px]' : 'h-0'}`}>
                     <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                         <li>
                             <input type="checkbox" name="checkbox" id="checkbox-menu" className="hidden" />
                             <label htmlFor="checkbox-menu" className='font-semibold p-2 flex flex-row items-center text-lg'>
                                 <Button onClick={toggleMenu} className={`font-normal`}>Mudar tema</Button >
                             </label>
-                            <ul className={`transition-all duration-300 list-none overflow-hidden ${openMenu ? 'h-[150px]' : 'h-0'}`}>
+                            <ul className={`transition-all duration-300 list-none overflow-hidden ${openMenu ? 'h-[160px]' : 'h-0'}`}>
                                 <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
                                     <li><Button onClick={() => setTheme("dark")}>Dark</Button></li>
                                     <li><Button onClick={() => setTheme("light")}>Light</Button></li>
