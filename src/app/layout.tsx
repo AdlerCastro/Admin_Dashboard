@@ -6,6 +6,7 @@ import ReactQueryProvier from "@/utils/ReactQueryProvider";
 import SessionProvider from "@/utils/SessionProvider";
 
 import "./globals.css";
+import { ThemeProvider } from "@/utils/ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,13 +30,19 @@ export default async function RootLayout({
   return (
     <html lang="pt-br">
       <body className={poppins.className}>
-        <ReactQueryProvier>
-          <SessionProvider session={session}>
-            <main>
-              {children}
-            </main>
-          </SessionProvider>
-        </ReactQueryProvier>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <ReactQueryProvier>
+            <SessionProvider session={session}>
+              <main>
+                {children}
+              </main>
+            </SessionProvider>
+          </ReactQueryProvier>
+        </ThemeProvider>  
       </body>
     </html>
   );
