@@ -12,6 +12,7 @@ import { Input } from '@/components/atoms/Input';
 import { ListHeader } from '@/components/molecules/List/Header';
 import { Item } from '@/components/molecules/List/Item';
 import { Empty } from '@/components/organisms/Empty';
+import Chart from '@/components/molecules/Graphics';
 
 import { getUserById } from '@/actions/getUserById';
 import { useQuery } from '@tanstack/react-query';
@@ -100,8 +101,10 @@ export default function UserProfilePage() {
         setTasks(updatedTasks)
     }
 
+    const percent = (checkedTasksCounter / tasks.length) * 100;
+
     return (
-        <div className='relative w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-zinc-50 flex flex-col items-center gap-10'>
+        <div className='relative w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-zinc-50 flex flex-col items-center justify-around'>
             <Button className='z-10 absolute left-1 top-1
             ' onClick={() => routerBack()}>Voltar</Button>
             <Table className='mt-16 p-5 rounded-lg'>
@@ -132,7 +135,7 @@ export default function UserProfilePage() {
                         checkedTasksCounter={checkedTasksCounter}
                     />
                     {tasks.length > 0 ? (
-                        <div>
+                        <div className='overflow-auto h-32'>
                             {tasks.map((task) => (
                                 <Item
                                     key={task.id}
@@ -147,6 +150,13 @@ export default function UserProfilePage() {
                     )}
                 </div>
             </section>
+            <Chart
+                title='Gráfico de Performance'
+                description='Visualize um resumo das tarefas do usuário'
+                totalTasks={tasks.length}
+                tasksCheck={checkedTasksCounter}
+                percentCheck={percent.toFixed(2)}
+            />
         </div>
     )
 }
