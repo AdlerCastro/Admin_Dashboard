@@ -101,31 +101,30 @@ export default function UserProfilePage() {
     }
 
     return (
-        <div className='relative w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-zinc-50 flex flex-col items-center justify-around'>
-            <Button className='absolute left-1 top-1 border-[1px] bg-zinc-200 hover:bg-zinc-300 text-black hover:text-black
-            dark:bg-zinc-900 dark:border-zinc-500  dark:hover:bg-zinc-800
+        <div className='relative w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-zinc-50 flex flex-col items-center gap-10'>
+            <Button className='z-10 absolute left-1 top-1
             ' onClick={() => routerBack()}>Voltar</Button>
-            <Table className='p-5 bg-zinc-200 rounded-lg'>
-                <TableBody className='items-center'>
-                    <TableRow className='flex gap-2 hover:bg-zinc-300'>
+            <Table className='mt-16 p-5 rounded-lg'>
+                <TableBody className='items-center border-b'>
+                    <TableRow className='flex gap-2'>
                         <TableCell>ID:</TableCell>
                         <TableCell>{data?._id}</TableCell>
                     </TableRow>
-                    <TableRow className='flex gap-2 hover:bg-zinc-300'>
+                    <TableRow className='flex gap-2'>
                         <TableCell>Nome:</TableCell>
                         <TableCell>{data?.name}</TableCell>
                     </TableRow>
-                    <TableRow className='flex gap-2 hover:bg-zinc-300'>
+                    <TableRow className='flex gap-2'>
                         <TableCell>Cargo:</TableCell>
                         <TableCell>{data?.cargo}</TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
-            <section className='bg-zinc-800 w-full flex flex-col items-center p-3 rounded-lg'>
+            <section className='border-b-[1px] w-full flex flex-col items-center p-3 rounded-lg transition-all'>
                 <div className='flex items-center'>
                     <Input className='w-96 h-7 mr-5 text-black dark:text-white' onChange={(e) => setInputValue(e.target.value)}
                         value={inputValue} />
-                    <Button className='hover:transform-none' onClick={handleAddTask}>Criar Tarefa</Button>
+                    <Button onClick={handleAddTask}>Criar Tarefa</Button>
                 </div>
                 <div className='w-full'>
                     <ListHeader

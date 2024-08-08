@@ -8,7 +8,7 @@ const Button = forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     const Component = asChild ? Slot : 'button'
 
     return (
-        <Component className={cn("bg-zinc-900 hover:bg-zinc-950 hover:scale-105 text-zinc-100 hover:text-zinc-100 rounded-sm hover:rounded-md p-2 transition-all duration-[0.1s]" ,className)} ref={ref} {...rest}>
+        <Component className={cn("bg-zinc-950 text-white border-zinc-500 border-[1px] hover:bg-zinc-800 rounded-sm hover:rounded-md p-2 transition-all duration-[0.1s] hover:scale-105" ,className)} ref={ref} {...rest}>
             {children}
         </Component>
     )

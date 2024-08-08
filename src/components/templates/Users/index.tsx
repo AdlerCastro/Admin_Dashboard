@@ -34,7 +34,7 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="w-full h-full bg-zinc-900 text-zinc-50">
+    <div className="w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-white">
       <Table>
         <TableCaption>A lista dos mais recentes usuários</TableCaption>
         <TableHeader>
@@ -49,7 +49,7 @@ export default function UsersPage() {
         <TableBody>
           {data.map((user: any) => (
             <TableRow key={user._id}>
-              <TableCell className="font-medium">{user._id}</TableCell>
+              <TableCell>{user._id}</TableCell>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell>{user.cargo}</TableCell>
