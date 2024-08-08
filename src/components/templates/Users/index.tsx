@@ -34,11 +34,11 @@ export default function UsersPage() {
   }
 
   return (
-    <div className="w-full h-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-white">
+    <div className="w-full bg-zinc-100 text-black dark:bg-zinc-900 dark:text-white">
       <Table>
         <TableCaption>A lista dos mais recentes usuários</TableCaption>
         <TableHeader>
-          <TableRow className="w-[100px]">
+          <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Nome</TableHead>
             <TableHead>Email</TableHead>
