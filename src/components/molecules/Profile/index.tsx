@@ -36,7 +36,6 @@ export default function Profile() {
         </label>
         <ul className={`transition-all duration-300 list-none overflow-hidden ${openProfile ? 'h-[140px]' : 'h-0'}`}>
           <div className='transition-all duration-300 list-none flex flex-col gap-y-2 p-1 bg-transparent text-center '>
-            <li><Button className='font-normal'>Visualizar perfil</Button ></li>
             <li><Button className='font-normal' onClick={() => signOut()}>Sair</Button ></li>
           </div>
         </ul>
