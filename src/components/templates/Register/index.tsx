@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import Button from "@/components/atoms/Button";
 import Link from "next/link";
+import { Input } from "@/components/atoms/Input";
 
 export default function RegisterPage() {
 
@@ -57,38 +58,38 @@ export default function RegisterPage() {
                 <form onSubmit={handleSubmit} className="w-full flex flex-col gap-10">
                     <label className='ml-8'>
                         <h3 className="mb-2">Digite seu nome</h3>
-                        <input
+                        <Input
                             type="text"
                             name="name"
                             placeholder="fulano da silva"
-                            className="text-black w-full"
+                            className="w-full"
                         />
                     </label>
                     <label className='ml-8'>
                         <h3 className="mb-2">Digite seu email</h3>
-                        <input
+                        <Input
                             type="email"
                             name="email"
                             placeholder="fulano@xxx.com"
-                            className=" text-black w-full"
+                            className="w-full"
                         />
                     </label>
                     <label className='ml-8'>
                         <h3 className="mb-2">Digite seu cargo</h3>
-                        <input
+                        <Input
                             type="text"
                             name="cargo"
                             placeholder="Trabalhador..."
-                            className=" text-black w-full"
+                            className="w-full"
                         />
                     </label>
                     <label className='ml-8'>
                         <h3 className="mb-2">Digite sua senha</h3>
-                        <input
+                        <Input
                             type="password"
                             name="password"
                             placeholder="fulano123"
-                            className="text-black w-full"
+                            className="w-full"
                         />
                     </label>
                     <Button className="self-center dark:bg-zinc-200 dark:text-black dark:hover:bg-zinc-300 dark:hover:text-black" type="submit">Cadastre-se</Button>

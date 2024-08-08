@@ -44,7 +44,7 @@ export default function LoginPage() {
               type="email"
               name="email"
               placeholder="fulano@xxx.com"
-              className=" text-black w-full"
+              className="w-full"
             />
           </label>
           <label className='ml-8'>
@@ -53,7 +53,7 @@ export default function LoginPage() {
               type="password"
               name="password"
               placeholder="fulano123"
-              className="text-black w-full"
+              className="w-full"
             />
           </label>
           <Button className="self-center dark:bg-zinc-200 dark:text-black dark:hover:bg-zinc-300 dark:hover:text-black" type="submit">Acessar</Button>
